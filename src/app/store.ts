@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import moviesReducer from "../features/movies/MovieSlice";
 import favoritesReducer from "../features/favorites/favorites";
 import  bookingReducer  from "../features/booking/booking";
+import { buyTicketReducer } from "../pages/BuyTickets/model/buyticketSlice";
 
 export const store = configureStore({
     reducer: {
         moviesReducer,
         favoritesReducer,
         bookingReducer,
+        buyTicketReducer
     }
 });
 

@@ -16,6 +16,7 @@ function App() {
           <Route path="/register/login" element={<Login />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/profile" element={<Profile />}/>
+          
           <Route path="/movie/:id" element={<OneCard />}/>
           <Route path="/favorites/movie/:id" element={<OneCard />}/>
           <Route path="*" element={<NotFound />}/>

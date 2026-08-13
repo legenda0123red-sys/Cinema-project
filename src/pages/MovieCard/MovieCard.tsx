@@ -3,12 +3,17 @@ import {
   addFavorites,
   removeFavorites,
 } from "../../features/favorites/favorites";
-import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../app/store";
 import { Link } from "react-router-dom";
+import { openModal } from "../BuyTickets/model/buyticketSlice";
+
 
 function MovieCard({ movie }: MovieCardProps) {
+  const isOpen = useSelector((state: RootState) => state.buyTicketReducer.openW);
   const dispatch = useDispatch<AppDispatch>();
+
+  if (!isOpen) return null;
   return (
     <>
       <div className="group bg-zinc-900 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 w-65">
@@ -65,7 +70,9 @@ function MovieCard({ movie }: MovieCardProps) {
             </span>
           </div>
 
-          <button className="w-full mt-4 bg-red-600 hover:bg-red-700 text-white py-2 rounded-xl transition">
+          <button
+          onClick={() => dispatch(openModal())}
+          className="w-full mt-4 bg-red-600 hover:bg-red-700 text-white py-2 rounded-xl transition">
             Купить билет
           </button>
           <p className="text-center text-lg text-white pt-2.5">
